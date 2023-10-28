@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface Character {
   id: number;
   name: string;
@@ -13,6 +15,8 @@ export interface DataDisplayState {
   characters: Character[];
   error: Error | null;
   isLoaded: boolean;
+  notFound: boolean;
+  searchTerm: string;
 }
 export interface CardProps {
   character: Character;
@@ -24,4 +28,13 @@ export interface SearchInputProps {
 
 export interface SearchInputState {
   searchTerm: string;
+}
+
+export interface ErrorBoundaryProps {
+  children: ReactNode;
+}
+
+export interface ErrorBoundaryState {
+  hasError: boolean;
+  error: Error | null;
 }
