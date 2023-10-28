@@ -9,6 +9,19 @@ export interface Character {
   episode: string;
 }
 
- export interface DataDisplayState {
+export interface DataDisplayState {
   characters: Character[];
+  error: Error | null;
+  isLoaded: boolean;
+}
+export interface CardProps {
+  character: Character;
+}
+
+export interface SearchInputProps {
+  onSearch: (searchTerm: string) => void;
+}
+
+export interface SearchInputState {
+  searchTerm: string;
 }
