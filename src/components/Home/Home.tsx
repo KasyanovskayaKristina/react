@@ -1,8 +1,8 @@
 import { Component } from "react";
-import { DataDisplayState } from "./interface/interface";
-import Card from "./Card";
-import SearchInput from "./SearchInput";
-
+import { DataDisplayState } from "../interface/interface";
+import Card from "../Card/Card";
+import SearchInput from "../SearchInput/SearchInput";
+import "./Home.css";
 export default class Home extends Component<object, DataDisplayState> {
   constructor(props: DataDisplayState) {
     super(props);
@@ -57,15 +57,19 @@ export default class Home extends Component<object, DataDisplayState> {
       return <p>Loading ....</p>;
     } else {
       return (
-        <div>
-          <SearchInput onSearch={this.handleSearch} />
-          {notFound ? (
-            <p>Not found</p>
-          ) : (
-            characters.map((character) => (
-              <Card key={character.id} character={character} />
-            ))
-          )}
+        <div className="main-block">
+          <div className="search">
+            <SearchInput onSearch={this.handleSearch} />
+          </div>
+          <div className="card-block">
+            {notFound ? (
+              <p className="not-found">Not found</p>
+            ) : (
+              characters.map((character) => (
+                <Card key={character.id} character={character} />
+              ))
+            )}
+          </div>
         </div>
       );
     }

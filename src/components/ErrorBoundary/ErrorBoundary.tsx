@@ -1,13 +1,7 @@
-import React, { ErrorInfo, ReactNode } from "react";
+import React, { ErrorInfo } from "react";
+import "../index.css";
+import { ErrorBoundaryProps, ErrorBoundaryState } from "../interface/interface";
 
-interface ErrorBoundaryProps {
-  children: ReactNode;
-}
-
-interface ErrorBoundaryState {
-  hasError: boolean;
-  error: Error | null;
-}
 function logErrorToMyService(error: Error, errorInfo: ErrorInfo) {
   console.error(error, errorInfo);
 }

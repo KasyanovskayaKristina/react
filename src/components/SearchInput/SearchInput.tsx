@@ -1,6 +1,6 @@
 import { Component } from "react";
-import { SearchInputProps, SearchInputState } from "./interface/interface";
-
+import { SearchInputProps, SearchInputState } from "../interface/interface";
+import "./SearchInput.css";
 class SearchInput extends Component<SearchInputProps, SearchInputState> {
   constructor(props: SearchInputProps) {
     super(props);
@@ -29,9 +29,16 @@ class SearchInput extends Component<SearchInputProps, SearchInputState> {
   render() {
     const { searchTerm } = this.state;
     return (
-      <div>
-        <input type="text" value={searchTerm} onChange={this.handleChange} />
-        <button onClick={this.handleSearch}>Search</button>
+      <div className="search-form">
+        <input
+          className="search-input"
+          type="text"
+          value={searchTerm}
+          onChange={this.handleChange}
+        />
+        <button onClick={this.handleSearch} className="search-button">
+          Search
+        </button>
       </div>
     );
   }

@@ -7,7 +7,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:react/jsx-runtime", 
+    "plugin:react/jsx-runtime",
     "prettier",
   ],
   overrides: [
@@ -25,9 +25,13 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
-    //project: "./tsconfig.json",
   },
   plugins: ["@typescript-eslint", "react"],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
   rules: {
     "comma-dangle": ["error", "only-multiline"],
     "react/prop-types": "off",
