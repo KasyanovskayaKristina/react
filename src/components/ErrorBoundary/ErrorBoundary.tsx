@@ -1,5 +1,4 @@
 import React, { ErrorInfo } from "react";
-import "../index.css";
 import { ErrorBoundaryProps, ErrorBoundaryState } from "../interface/interface";
 
 function logErrorToMyService(error: Error, errorInfo: ErrorInfo) {
