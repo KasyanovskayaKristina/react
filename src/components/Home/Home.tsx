@@ -16,8 +16,16 @@ export default class Home extends Component<object, DataDisplayState> {
   }
 
   componentDidMount() {
-    this.fetchData("");
+    const savedSearchTerm = localStorage.getItem("searchTerm");
+    if (savedSearchTerm) {
+      this.setState({ searchTerm: savedSearchTerm }, () => {
+        this.fetchData(savedSearchTerm);
+      });
+    } else {
+      this.fetchData("");
+    }
   }
+
   fetchData = (searchTerm: string) => {
     let url = "https://rickandmortyapi.com/api/character";
     if (searchTerm) {
@@ -49,6 +57,7 @@ export default class Home extends Component<object, DataDisplayState> {
   handleSearch = (searchTerm: string) => {
     this.setState({ searchTerm: searchTerm.trim() }, () => {
       this.fetchData(this.state.searchTerm);
+      localStorage.setItem("searchTerm", this.state.searchTerm);
     });
   };
   render() {
