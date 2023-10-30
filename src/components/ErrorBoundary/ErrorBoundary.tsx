@@ -25,14 +25,7 @@ export default class ErrorBoundary extends React.Component<
     if (this.state.hasError) {
       return (
         <div>
-          <h2>Error occurred: {this.state.error?.message}</h2>
-          <button
-            onClick={() => {
-              throw new Error("Test Error");
-            }}
-          >
-            Throw Error
-          </button>
+          <h2>Error!!! Just reload page</h2>
         </div>
       );
     }
