@@ -1,14 +1,18 @@
+import { Component } from "react";
 import "./App.css";
+import Home from "./components/Home/Home";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import ErrorBoundaryButton from "./components/ErrorBoundary/ErrorBoundaryButton";
 
-function App() {
-  return (
-    <>
-      <h1>Vite + React</h1>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <>
+        <ErrorBoundary>
+          <Home />
+          <ErrorBoundaryButton/>
+        </ErrorBoundary>
+      </>
+    );
+  }
 }
-
-export default App;
