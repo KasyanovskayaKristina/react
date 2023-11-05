@@ -1,6 +1,6 @@
 import { Component } from "react";
-import { ErrorButton } from "../interface/interface";
-import './ErrorBoundaryButton.css'
+import { ErrorButton } from "../../interface/interface";
+import "./ErrorBoundaryButton.css";
 export default class ErrorBoundaryButton extends Component<
   object,
   ErrorButton
