@@ -2,7 +2,6 @@ import { ReactNode, createContext, useContext, useState } from "react";
 
 export type Pokemon = {
   name: string;
-  types: string;
 };
 
 type ApiContextType = {
