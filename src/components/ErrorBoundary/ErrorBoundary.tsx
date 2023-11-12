@@ -1,8 +1,6 @@
 import React, { ErrorInfo } from "react";
-import {
-  ErrorBoundaryProps,
-  ErrorBoundaryState,
-} from "../../interface/interface";
+import { ErrorBoundaryProps, ErrorBoundaryState } from "./ErrorBoundaryButton";
+
 
 function logErrorToMyService(error: Error, errorInfo: ErrorInfo) {
   console.error(error, errorInfo);

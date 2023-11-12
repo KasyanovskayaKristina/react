@@ -1,6 +1,19 @@
-import { Component } from "react";
-import { ErrorButton } from "../../interface/interface";
+import { Component, ReactNode } from "react";
+
 import "./ErrorBoundaryButton.css";
+
+export interface ErrorBoundaryProps {
+  children: ReactNode;
+}
+
+export interface ErrorBoundaryState {
+  hasError: boolean;
+  error: Error | null;
+}
+
+export interface ErrorButton {
+  hasError: boolean;
+}
 export default class ErrorBoundaryButton extends Component<
   object,
   ErrorButton
