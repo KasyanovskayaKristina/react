@@ -5,6 +5,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import MainPage from "../MainPage/MainPage";
 import CardDetail from "../../components/CardDetails/CardDetails";
 import NotFound from "../../components/NotFound/NotFound";
+import Pagination from "../../components/Pagination/Pagination";
+import PerPageSelect from "../../components/PerPageSelect/PerPageSelect";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
             <Route path="/details/:pokemonName" element={<CardDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Pagination />
+          <PerPageSelect />
         </ApiProvider>
       </div>
     </Router>

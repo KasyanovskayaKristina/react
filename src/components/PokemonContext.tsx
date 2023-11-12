@@ -116,8 +116,6 @@ export const ApiProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const handleSearchClick = async () => {
-    //setCurrentPage(1);
-    //setSearching(true);
     setNotFound(false);
     await performSearch();
   };

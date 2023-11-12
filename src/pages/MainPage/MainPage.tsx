@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useApi } from "../../components/PokemonContext";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import Pagination from "../../components/Pagination/Pagination";
-import PerPageSelect from "../../components/PerPageSelect/PerPageSelect";
 import CardDetail from "../../components/CardDetails/CardDetails";
 
 const MainPage = () => {
@@ -67,8 +65,6 @@ const MainPage = () => {
             ))}
         {!searching && notFound && <p>Not Found</p>}
       </div>
-      <Pagination />
-      <PerPageSelect />
       {isModalOpen && selectPokemon && <CardDetail />}
     </div>
   );

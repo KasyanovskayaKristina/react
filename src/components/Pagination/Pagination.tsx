@@ -3,6 +3,7 @@ import "./Pagination.css";
 
 const Pagination = () => {
   const { currentPage, totalPages, setCurrentPage } = useApi();
+
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
   };
