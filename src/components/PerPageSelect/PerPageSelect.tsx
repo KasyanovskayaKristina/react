@@ -7,12 +7,13 @@ function PerPageSelect() {
     fetchAllPokemon,
     setPerPage,
     perPage,
+    displayPokemon,
   } = useApi();
 
   const handlePerPageChange = (newPerPage: number) => {
     setPerPage(newPerPage);
-    setCurrentPage(1); // Сброс текущей страницы при изменении количества на странице
-    calculateTotalPages(); // Пересчет общего количества страниц с учетом нового perPage
+    setCurrentPage(1);
+    calculateTotalPages(displayPokemon);
     fetchAllPokemon();
   };
 
@@ -22,7 +23,7 @@ function PerPageSelect() {
       <select
         onChange={(e) => handlePerPageChange(Number(e.target.value))}
         value={perPage}
-        id="dropdown"
+        id="perPage"
       >
         <option value={5}>5</option>
         <option value={10}>10</option>

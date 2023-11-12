@@ -2,6 +2,7 @@ import { ReactNode, createContext, useContext, useState } from "react";
 
 export type Pokemon = {
   name: string;
+  types: string;
 };
 
 type ApiContextType = {
@@ -33,6 +34,9 @@ type ApiContextType = {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   error: boolean;
   setError: React.Dispatch<React.SetStateAction<boolean>>;
+  handlePokemonClick: (pokemon: Pokemon | null) => void;
+  handleSearchClick: () => Promise<void>;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const ApiContext = createContext<ApiContextType | undefined>(undefined);
@@ -107,6 +111,25 @@ export const ApiProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
+  const handlePokemonClick = (pokemon: Pokemon | null) => {
+    setSelectPokemon(pokemon);
+    setIsModalOpen(true);
+  };
+
+  const handleSearchClick = async () => {
+    //setCurrentPage(1);
+    //setSearching(true);
+    setNotFound(false);
+    await performSearch();
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newSearchQuery = e.target.value;
+    setSearchQuery(newSearchQuery);
+    setSelectPokemon(null);
+    localStorage.setItem("searchQuery", newSearchQuery);
+  };
+
   const apiContextValue: ApiContextType = {
     searchPokemon,
     allPokemon,
@@ -136,6 +159,9 @@ export const ApiProvider: React.FC<{ children: ReactNode }> = ({
     setIsModalOpen,
     error,
     setError,
+    handlePokemonClick,
+    handleSearchClick,
+    handleInputChange,
   };
 
   return (

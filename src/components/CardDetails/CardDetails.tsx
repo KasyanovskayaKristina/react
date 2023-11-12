@@ -11,6 +11,7 @@ const CardDetail = () => {
   return (
     <div className={`card-detail-modal ${isModalOpen ? "active" : ""}`}>
       <h2>{selectPokemon.name}</h2>
+      <p>{selectPokemon.types}</p>
       <button
         onClick={() => {
           setIsModalOpen(false);

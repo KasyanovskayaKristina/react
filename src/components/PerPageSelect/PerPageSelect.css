@@ -1,4 +1,4 @@
-#dropdown {
+#perPage {
     border: 1px solid rgb(181, 168, 236);
     border-radius: 20px;
     background: linear-gradient(to bottom, #fbfcfa 0%, #f6f7f5 100%);
@@ -10,7 +10,7 @@
 
 }
 
-#dropdown option {
+#perPage option {
     background: rgb(181, 168, 236);
     color: #ffffff;
 }

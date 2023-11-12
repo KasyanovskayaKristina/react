@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { Pokemon, useApi } from "../../components/PokemonContext";
+import { useApi } from "../../components/PokemonContext";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Pagination from "../../components/Pagination/Pagination";
 import PerPageSelect from "../../components/PerPageSelect/PerPageSelect";
 import CardDetail from "../../components/CardDetails/CardDetails";
-
 
 const MainPage = () => {
   const {
@@ -19,10 +18,9 @@ const MainPage = () => {
     calculateTotalPages,
     displayPokemon,
     setDisplayPokemon,
-    setSelectPokemon,
-    setIsModalOpen,
     isModalOpen,
     selectPokemon,
+    handlePokemonClick,
   } = useApi();
 
   useEffect(() => {
@@ -48,18 +46,13 @@ const MainPage = () => {
     calculateTotalPages(allPokemon);
   }, [allPokemon, perPage]);
 
-  const handlePokemonClick = (pokemon: Pokemon | null) => {
-    setSelectPokemon(pokemon);
-    setIsModalOpen(true);
-  };
-
   return (
     <div>
       <SearchBar />
       <div>
         {searchQuery === ""
           ? displayPokemon.map((pokemon) => (
-              <div key={pokemon.name}>
+              <div key={pokemon.name} role="heading" >
                 <h3 onClick={() => handlePokemonClick(pokemon)}>
                   {pokemon.name}
                 </h3>

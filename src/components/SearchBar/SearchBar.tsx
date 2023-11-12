@@ -6,9 +6,8 @@ const SearchBar = () => {
     searching,
     setSearchQuery,
     searchQuery,
-    setNotFound,
-    performSearch,
-    setSelectPokemon,
+    handleInputChange,
+    handleSearchClick,
   } = useApi();
 
   useEffect(() => {
@@ -17,20 +16,6 @@ const SearchBar = () => {
       setSearchQuery(storedSearchQuery);
     }
   }, [setSearchQuery]);
-
-  const handleSearchClick = async () => {
-    //setCurrentPage(1);
-    //setSearching(true);
-    setNotFound(false);
-    await performSearch();
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newSearchQuery = e.target.value;
-    setSearchQuery(newSearchQuery);
-    setSelectPokemon(null);
-    localStorage.setItem("searchQuery", newSearchQuery);
-  };
 
   return (
     <div>

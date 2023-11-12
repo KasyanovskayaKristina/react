@@ -1,4 +1,4 @@
-/* Стили для модального окна */
+
 .card-detail-modal {
     display: none;
     position: fixed;
@@ -10,9 +10,11 @@
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    width: 550px;
+    height: 600px;
 }
 
-/* Подложка для фона */
+
 .overlay {
     display: none;
     position: fixed;
@@ -24,7 +26,6 @@
     z-index: 999;
 }
 
-/* Кнопка закрытия */
 .close-button {
     position: absolute;
     top: 10px;
@@ -34,7 +35,7 @@
     color: #333;
 }
 
-/* Отобразим модальное окно и подложку, когда они активированы */
+
 .card-detail-modal.active {
     display: block;
 }
