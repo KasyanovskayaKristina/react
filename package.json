@@ -11,7 +11,7 @@
     "format:fix": "prettier --write .",
     "preview": "vite preview",
     "prepare": "husky install",
-    "test": "vitest",
+    "test": "vitest run",
     "coverage": "vitest run --coverage"
   },
   "husky": {
