@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import { PokemonDetailProps } from "../types";
+import React from "react";
 
 const PokemonDetail: React.FC<PokemonDetailProps> = ({ pokemon }) => {
   const router = useRouter();

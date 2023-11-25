@@ -26,3 +26,7 @@ export interface CardPerPageSelectorProps {
   limit: number;
   onLimitChange: (newLimit: number) => void;
 }
+
+export interface PokemonListData {
+  results: Pokemon[];
+}

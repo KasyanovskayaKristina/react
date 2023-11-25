@@ -1,7 +1,5 @@
 import React from "react";
-import { CardPerPageSelectorProps } from "./types";
-
-
+import { CardPerPageSelectorProps } from "../types";
 
 const CardPerPageSelector: React.FC<CardPerPageSelectorProps> = ({
   limit,
