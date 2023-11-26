@@ -1,12 +1,13 @@
 import React from "react";
 import { CardPerPageSelectorProps } from "../types";
+import styles from "./PageSizeSelector.module.css";
 
 const CardPerPageSelector: React.FC<CardPerPageSelectorProps> = ({
   limit,
   onLimitChange,
 }) => {
   return (
-    <div>
+    <div className={styles.container}>
       Show:
       <select
         value={limit}

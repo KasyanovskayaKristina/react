@@ -1,13 +1,14 @@
-import { GetServerSideProps } from "next";
-import { useEffect, useState } from "react";
-import router from "next/router";
-import Pagination from "./Pagination/Pagination";
-import CardPerPageSelector from "./PageSizeSelector/PageSizeSelector";
-import { HomeProps, Pokemon, PokemonListData } from "./types";
-import { API_BASE_URL, DEFAULT_LIMIT } from "./constants/constants";
-import SearchBar from "./SearchBar/SearchBar";
-import PokemonList from "./pokemonList/PokemonList";
-import React from "react";
+import { GetServerSideProps } from 'next'
+import { useEffect, useState } from 'react'
+import router from 'next/router'
+import Pagination from './Pagination/Pagination'
+import CardPerPageSelector from './PageSizeSelector/PageSizeSelector'
+import { HomeProps, Pokemon, PokemonListData } from './types'
+import { API_BASE_URL, DEFAULT_LIMIT } from './constants/constants'
+import SearchBar from './SearchBar/SearchBar'
+import PokemonList from './pokemonList/PokemonList'
+import React from 'react'
+import styles from './index.module.css'
 
 const Home: React.FC<HomeProps> = ({
   pokemons,
@@ -15,119 +16,127 @@ const Home: React.FC<HomeProps> = ({
   limit: DEFAULT_LIMIT,
   page: defaultPage,
 }) => {
-  const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>(pokemons);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [limit, setLimit] = useState<number>(DEFAULT_LIMIT);
-  const [originalPokemons] = useState<Pokemon[]>(pokemons);
-  const [error, setError] = useState<string | null>(null);
-  const [searchCompleted] = useState(false);
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(defaultPage)
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>(pokemons)
+  const [searchTerm, setSearchTerm] = useState<string>('')
+  const [limit, setLimit] = useState<number>(DEFAULT_LIMIT)
+  const [originalPokemons] = useState<Pokemon[]>(pokemons)
+  const [error, setError] = useState<string | null>(null)
+  const [searchCompleted] = useState(false)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   async function fetchData(url: string): Promise<Pokemon> {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
-      const response = await fetch(url);
-      handleErrors(response);
-      return await response.json();
+      const response = await fetch(url)
+      handleErrors(response)
+      return await response.json()
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
   const setPokemonListFromData = (data: PokemonListData) => {
-    const pokemons = data.results || [{ name: searchTerm }];
-    setPokemonList(pokemons);
-  };
+    const pokemons = data.results || [{ name: searchTerm }]
+    setPokemonList(pokemons)
+  }
 
   const handleErrors = (response: Response) => {
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(response.statusText)
     }
-    return response;
-  };
+    return response
+  }
 
   const handleSearch = async () => {
     try {
-      let updatedList = originalPokemons;
-      setIsLoading(true);
-      if (searchTerm.trim() !== "") {
-        const data = await fetchData(`${API_BASE_URL}/${searchTerm}`);
-        const searchedPokemon: Pokemon = { name: data.name, url: data.url };
-        updatedList = [searchedPokemon];
-        localStorage.setItem("searchTerm", searchTerm);
+      let updatedList = originalPokemons
+      setIsLoading(true)
+      if (searchTerm.trim() !== '') {
+        const data = await fetchData(`${API_BASE_URL}/${searchTerm}`)
+        const searchedPokemon: Pokemon = { name: data.name, url: data.url }
+        updatedList = [searchedPokemon]
+        localStorage.setItem('searchTerm', searchTerm)
       } else {
-        localStorage.removeItem("searchTerm");
+        localStorage.removeItem('searchTerm')
       }
 
-      setPokemonListFromData({ results: updatedList });
-      setError(null);
+      setPokemonListFromData({ results: updatedList })
+      setError(null)
       router.push({
-        pathname: "/",
+        pathname: '/',
         query: { page: 1, limit, searchTerm },
-      });
+      })
     } catch (error) {
-      console.error("An error occurred during the search:", error);
-      setError("An error occurred during the search");
-      setIsLoading(false);
+      console.error('An error occurred during the search:', error)
+      setError('An error occurred during the search')
+      setIsLoading(false)
     }
-  };
+  }
 
   useEffect(() => {
-    const storedSearchTerm = localStorage.getItem("searchTerm");
+    const storedSearchTerm = localStorage.getItem('searchTerm')
     if (storedSearchTerm) {
-      setSearchTerm(storedSearchTerm);
+      setSearchTerm(storedSearchTerm)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
     if (!searchTerm.trim()) {
-      setPokemonList(originalPokemons);
+      setPokemonList(originalPokemons)
     }
-  }, [searchTerm, originalPokemons]);
+  }, [searchTerm, originalPokemons])
 
   useEffect(() => {
     if (isInitialLoad) {
-      setPokemonList(pokemons);
-      setIsInitialLoad(false);
+      setPokemonList(pokemons)
+      setIsInitialLoad(false)
     }
-  }, [isInitialLoad, pokemons]);
+  }, [isInitialLoad, pokemons])
 
   const handlePageChange = async (newPage: number) => {
-    const offset = (newPage - 1) * limit;
+    const offset = (newPage - 1) * limit
     const response = await fetch(
-      `${API_BASE_URL}?limit=${limit}&offset=${offset}`
-    );
-    const data = await response.json();
-    const pokemons: Pokemon[] = data.results;
-    setPokemonList(pokemons);
-    setCurrentPage(newPage);
-    window.scrollTo(0, 0);
+      `${API_BASE_URL}?limit=${limit}&offset=${offset}`,
+    )
+    const data = await response.json()
+    const pokemons: Pokemon[] = data.results
+    setPokemonList(pokemons)
+    setCurrentPage(newPage)
+    window.scrollTo(0, 0)
     router.push({
-      pathname: "/",
+      pathname: '/',
       query: { page: newPage, limit },
-    });
-  };
+    })
+  }
+
+  const fetchPokemonList = async (newLimit: number) => {
+    const response = await fetch(`${API_BASE_URL}?limit=${newLimit}&offset=0`)
+    const data = await response.json()
+    return data.results
+  }
+
+  const updateRouterParams = (newLimit: number, currentPage: number) => {
+    router.push({
+      pathname: '/',
+      query: { page: currentPage, limit: newLimit },
+    })
+  }
 
   const handleLimitChange = async (newLimit: number) => {
-    setLimit(newLimit);
-    const response = await fetch(`${API_BASE_URL}?limit=${newLimit}&offset=0`);
-    const data = await response.json();
-    const pokemons: Pokemon[] = data.results;
-    setPokemonList(pokemons);
-    setCurrentPage(1);
-    router.push({
-      pathname: "/",
-      query: { page: 1, limit: newLimit },
-    });
-  };
+    setLimit(newLimit)
+    const pokemons = await fetchPokemonList(newLimit)
+    setPokemonList(pokemons)
+    setCurrentPage(1)
+    updateRouterParams(newLimit, 1)
+  }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Pokemon List</h1>
-      <div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+      <div data-testid="pokemon-list">
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <SearchBar
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
@@ -157,7 +166,7 @@ const Home: React.FC<HomeProps> = ({
             onLimitChange={handleLimitChange}
           />
           <ul>
-            <PokemonList data-testid="pokemon-list" pokemonList={pokemonList} />
+            <PokemonList pokemonList={pokemonList} />
           </ul>
           <Pagination
             page={currentPage}
@@ -167,25 +176,25 @@ const Home: React.FC<HomeProps> = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   try {
     const limit = query.limit
       ? parseInt(query.limit as string, 10)
-      : DEFAULT_LIMIT;
-    const page = query.page ? parseInt(query.page as string, 10) : 1;
-    const offset = (page - 1) * limit;
-    const searchTerm = query.searchTerm ? query.searchTerm.toString() : "";
+      : DEFAULT_LIMIT
+    const page = query.page ? parseInt(query.page as string, 10) : 1
+    const offset = (page - 1) * limit
+    const searchTerm = query.searchTerm ? query.searchTerm.toString() : ''
 
-    let apiUrl = `${API_BASE_URL}?limit=${limit}&offset=${offset}`;
+    let apiUrl = `${API_BASE_URL}?limit=${limit}&offset=${offset}`
 
     if (searchTerm) {
-      apiUrl = `${API_BASE_URL}/${searchTerm}`;
+      apiUrl = `${API_BASE_URL}/${searchTerm}`
     }
 
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl)
 
     if (response.status === 404 && searchTerm) {
       return {
@@ -196,11 +205,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
           page,
           isInitialLoad: true,
         },
-      };
+      }
     }
 
-    const data = await response.json();
-    const pokemons = data.results || [{ name: searchTerm }];
+    const data = await response.json()
+    const pokemons = data.results || [{ name: searchTerm }]
 
     return {
       props: {
@@ -210,9 +219,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         page,
         isInitialLoad: true,
       },
-    };
+    }
   } catch (error) {
-    console.error("An error occurred during data fetching:", error);
+    console.error('An error occurred during data fetching:', error)
     return {
       props: {
         pokemons: [],
@@ -221,7 +230,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         page: 1,
         isInitialLoad: true,
       },
-    };
+    }
   }
-};
-export default Home;
+}
+export default Home

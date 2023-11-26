@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import { PokemonDetailProps } from "../types";
+import styles from "./[name].module.css";
 import React from "react";
 
 const PokemonDetail: React.FC<PokemonDetailProps> = ({ pokemon }) => {
@@ -11,9 +12,11 @@ const PokemonDetail: React.FC<PokemonDetailProps> = ({ pokemon }) => {
   };
 
   return (
-    <div>
-      <h1>{pokemon.name}</h1>
-      <button onClick={handleBack}>Back</button>
+    <div className={styles.container}>
+      <button className={styles.button} onClick={handleBack}>
+        Back
+      </button>
+      <h1 className={styles.name}>{pokemon.name}</h1>
     </div>
   );
 };

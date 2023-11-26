@@ -1,0 +1,21 @@
+.button {
+    box-shadow: 0 2px 4px lightblue;
+    border: 2px solid lightblue;
+    padding: .8rem;
+    border-radius: 10px;
+}
+
+.button:active {
+    border: 2px solid rgb(2, 25, 32);
+}
+
+.p {
+    font-size: 1em;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
