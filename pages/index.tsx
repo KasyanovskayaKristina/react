@@ -1,3 +1,4 @@
+import React from 'react'
 import { GetServerSideProps } from 'next'
 import { useEffect, useState } from 'react'
 import router from 'next/router'
@@ -7,15 +8,10 @@ import { HomeProps, Pokemon, PokemonListData } from './types'
 import { API_BASE_URL, DEFAULT_LIMIT } from './constants/constants'
 import SearchBar from './SearchBar/SearchBar'
 import PokemonList from './pokemonList/PokemonList'
-import React from 'react'
+
 import styles from './index.module.css'
 
-const Home: React.FC<HomeProps> = ({
-  pokemons,
-  total,
-  limit: DEFAULT_LIMIT,
-  page: defaultPage,
-}) => {
+const Home: React.FC<HomeProps> = ({ pokemons, total, page: defaultPage }) => {
   const [currentPage, setCurrentPage] = useState(defaultPage)
   const [pokemonList, setPokemonList] = useState<Pokemon[]>(pokemons)
   const [searchTerm, setSearchTerm] = useState<string>('')

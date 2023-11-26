@@ -84,17 +84,10 @@ test('updates Pokemon list correctly in useEffect', () => {
   }
 })
 
-function YourComponent({ setSearchTerm }) {
+const YourComponent = ({ setSearchTerm }) => {
   useEffect(() => {
-    const storedSearchTerm = localStorage.getItem('searchTerm')
-    if (storedSearchTerm) {
-      setSearchTerm((prevSearchTerm) => {
-        if (prevSearchTerm !== storedSearchTerm) {
-          return storedSearchTerm
-        }
-        return prevSearchTerm
-      })
-    }
+    const searchValue = localStorage.getItem('searchValue')
+    setSearchTerm(searchValue)
   }, [setSearchTerm])
 
   return <div>Your component content</div>

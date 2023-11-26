@@ -1,4 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+const withFonts = require('next-fonts')
+const withImages = require('next-images')
 
-module.exports = nextConfig
+module.exports = withImages(
+  withFonts({
+    webpack(config) {
+      return config
+    },
+  }),
+)

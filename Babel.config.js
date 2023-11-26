@@ -1,14 +1,11 @@
 module.exports = {
   presets: [
     'next/babel',
-    '@swc/babel-preset-typescript',
-    '@babel/preset-react',
-    '@babel/preset-typescript',
+    '@babel/preset-env',
+    ['@babel/preset-env', { targets: { node: 'current' } }],
   ],
-  plugins: ['transform-css-import-to-string'],
-  env: {
-    test: {
-      presets: [['next/babel', { 'preset-env': { modules: 'commonjs' } }]],
-    },
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
+  plugins: ['@babel/plugin-transform-runtime'],
 }
