@@ -1,26 +1,36 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "node",
-    "allowImportingTsExtensions": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "isolatedModules": true,
+    "lib": ["dom", "esnext"],
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["node_modules/@types", "./types"],
+    "types": ["jest"],
+    "allowJs": true,
+    "strict": false,
     "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "incremental": true,
+    "resolveJsonModule": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "pages/pokemon",
+    "pages/pokemonApi.tsx"
+  ],
+  "exclude": ["node_modules"]
 }

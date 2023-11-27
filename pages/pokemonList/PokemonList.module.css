@@ -1,0 +1,21 @@
+.ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.li {
+    margin-bottom: 8px;
+}
+
+.link {
+    text-decoration: none;
+    color: #0070f3;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #004080;
+}
