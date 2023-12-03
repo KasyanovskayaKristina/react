@@ -1,0 +1,14 @@
+{
+  "countriesData": [
+    { "id": "1", "name": "Armenia" },
+    { "id": "2", "name": "Azerbaijan" },
+    { "id": "3", "name": "Canada" },
+    { "id": "4", "name": "France" },
+    { "id": "5", "name": "Greece" },
+    { "id": "6", "name": "India" },
+    { "id": "7", "name": "Indonesia" },
+    { "id": "8", "name": "Kazakhstan" },
+    { "id": "9", "name": "Uzbekistan" },
+    { "id": "10", "name": "Russia" }
+  ]
+}
