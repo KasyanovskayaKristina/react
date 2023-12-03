@@ -1,0 +1,14 @@
+.cards {
+    display: flex;
+}
+
+.card {
+    color: rgb(190, 205, 228);
+    width: 450px;
+    height: 550px;
+}
+
+.img {
+    width: 250px;
+    height: 250px;
+}

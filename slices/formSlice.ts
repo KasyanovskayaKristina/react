@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface FormState {
+export interface FormState {
   formDataArray: FormData[];
   errors: { [key: string]: string };
 }
 
-interface FormData {
+export interface FormData {
   gender: string;
   email: string;
   name: string;

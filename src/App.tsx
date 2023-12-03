@@ -1,11 +1,11 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import PageOne from './components/PageOne';
-import Header from './components/Header';
-import Home from './components/Home';
-import UncontrolledForm from './components/PageTwo';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import UncontrolledForm from './components/UncontrolledForm/PageTwo';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import PageOne from './components/ControlledForm/PageOne';
 
 function App() {
   return (
@@ -15,7 +15,6 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="page1" element={<PageOne />} />
             <Route path="page2" element={<UncontrolledForm />} />
           </Routes>
         </Provider>

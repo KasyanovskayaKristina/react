@@ -1,0 +1,127 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10% auto 0 auto;
+    width: 400px;
+    height: auto;
+    overflow: hidden;
+    background: #c6d8ec;
+    border-radius: 10px;
+}
+
+.formLine {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 16px;
+    color: #333;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding: 20px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+.input-field input {
+    margin-top: 5px;
+}
+
+.input {
+    height: 35px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.inputSearch {
+    height: 35px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.input[type="submit"] {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+p {
+    color: red;
+    margin: 5px 0 0 0;
+}
+
+.gender {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.checkedTerms {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectWrapper {
+    width: 250px;
+    height: 35px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.countryPart {
+    display: flex;
+    align-items: center;
+}
+
+.countryPartTwo {
+    display: flex;
+    align-items: center;
+}
+
+.imageFrom {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button {
+    width: 150px;
+    height: 75px;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    border-radius: 10px;
+    margin: 10px;
+}
